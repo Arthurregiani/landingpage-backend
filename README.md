@@ -162,9 +162,9 @@ Seu backend está configurado para deploy em **3 plataformas gratuitas**. Recome
 3. **Configure variáveis de ambiente:**
    ```bash
    NODE_ENV=production
-   CLIENT_ORIGIN=https://seu-frontend.netlify.app
+   CLIENT_ORIGIN=https://arthurjregiani.netlify.app
    SMTP_SERVICE=gmail
-   SMTP_USER=seu_email@gmail.com
+   SMTP_USER=arthurjregiani@gmail.com
    SMTP_PASS=sua_senha_de_app_gmail
    SMTP_TO=seu_email@proton.me
    ```
