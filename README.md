@@ -2,7 +2,9 @@
 
 Backend API em Node.js para processar formulários de contato da landing page, com envio de emails automatizado via Gmail SMTP.
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com)
+[![Deploy Status](https://img.shields.io/badge/AWS%20EC2-DEPLOYED-success?style=for-the-badge&logo=amazonaws)](http://18.228.193.155/health)
+[![API Status](https://img.shields.io/badge/API-OPERATIONAL-brightgreen?style=for-the-badge)](http://18.228.193.155/api/contact)
+[![Email](https://img.shields.io/badge/Email-WORKING-blue?style=for-the-badge&logo=gmail)](mailto:arthurjlandingpage@proton.me)
 
 ## 📋 Funcionalidades
 
@@ -589,6 +591,38 @@ Este projeto está sob a licença ISC. Veja o arquivo [LICENSE](LICENSE) para de
 **Arthur J. Regiani**
 - GitHub: [@Arthurregiani](https://github.com/Arthurregiani)
 - Email: arthurregiani@gmail.com
+
+---
+
+## 🚀 AWS EC2 Deployment
+
+**Status: ✅ DEPLOYED AND OPERATIONAL**
+
+- **Instance**: t3.micro (São Paulo - sa-east-1)
+- **URL**: http://18.228.193.155/api/contact
+- **Health Check**: http://18.228.193.155/health
+- **Status**: 24/7 uptime, zero cold-start
+- **Email**: Gmail SMTP → Proton Mail ✅
+
+### Quick Deploy Commands:
+
+```bash
+# Configure SSH key path (adjust as needed)
+export AWS_SSH_KEY="$HOME/.ssh/your-key.pem"
+
+# Deploy to EC2
+./deploy-to-ec2.sh
+
+# Monitor application
+ssh -i "$AWS_SSH_KEY" ec2-user@18.228.193.155 'docker logs landingpage-backend -f'
+```
+
+### Files:
+- `deploy-to-ec2.sh` - Complete deployment script
+- `setup-server.sh` - Initial server configuration
+- `docker-compose.prod.yml` - Production Docker configuration
+- `DEPLOY-EC2.md` - Detailed deployment guide
+- `.env.prod.example` - Production environment template
 
 ---
 

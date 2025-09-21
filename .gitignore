@@ -111,3 +111,15 @@ logs
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# AWS and deployment files
+*.pem
+*.key
+.env.prod
+.env.temp
+
+# Docker volumes
+volumes/
+
+# Production logs  
+logs/
