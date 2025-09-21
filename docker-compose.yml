@@ -1,0 +1,44 @@
+services:
+  landingpage-backend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - .env
+    volumes:
+      # For development, you can uncomment these lines to enable hot reload
+      # - ./:/app
+      # - /app/node_modules
+      - logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:5000/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) }).on('error', () => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - landingpage-network
+
+  # Optional: Add a simple web server for serving frontend files
+  # Uncomment if you want to serve your frontend from the same compose setup
+  # landingpage-frontend:
+  #   image: nginx:alpine
+  #   ports:
+  #     - "3000:80"
+  #   volumes:
+  #     - ../landingpage:/usr/share/nginx/html:ro
+  #   restart: unless-stopped
+  #   networks:
+  #     - landingpage-network
+
+volumes:
+  logs:
+
+networks:
+  landingpage-network:
+    driver: bridge
